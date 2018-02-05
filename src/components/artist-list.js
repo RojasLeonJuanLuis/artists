@@ -9,17 +9,13 @@ import {
 import ArtistsBox from './artists-box'
 
 export default class ArtistList extends Component<{}> {
+
   render() {
-    const artist = {
-      name: 'Juan Luis Rojas',
-      image: 'https://static.platzi.com/media/files/bowie_a927fdf3-b321-4a5c-99ca-239cc86c57bc.png',
-      likes: 200,
-      comments: 10
-    }
+    const artists = this.props.artists
     return (
       <FlatList
-        data={Array(500).fill(artist)}
-        renderItem={({item}) => <ArtistsBox artist={artist} />}
+        data={artists}
+        renderItem={({item}) => <ArtistsBox artist={item} />}
       />
     );
   }

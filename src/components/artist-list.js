@@ -3,16 +3,12 @@ import {
   StyleSheet,
   Text,
   View,
-  ScrollView
+  FlatList
 } from 'react-native';
 
-import ArtistsBox from './components/artists-box'
+import ArtistsBox from './artists-box'
 
-import Icon from 'react-native-vector-icons/Ionicons';
-
-
-
-export default class App extends Component<{}> {
+export default class ArtistList extends Component<{}> {
   render() {
     const artist = {
       name: 'Juan Luis Rojas',
@@ -21,14 +17,10 @@ export default class App extends Component<{}> {
       comments: 10
     }
     return (
-      <ScrollView style={styles.container}>
-
-        {
-          Array(500).fill(artist).map(l => {
-            return <ArtistsBox artist={artist} />
-          })
-        }
-      </ScrollView>
+      <FlatList
+        data={Array(500).fill(artist)}
+        renderItem={({item}) => <ArtistsBox artist={artist} />}
+      />
     );
   }
 }

@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  ScrollView
 } from 'react-native';
 
 import ArtistsBox from './components/artists-box'
@@ -21,12 +21,14 @@ export default class App extends Component<{}> {
       comments: 10
     }
     return (
-      <View style={styles.container}>
-        <ArtistsBox artist={artist} />
-        <ArtistsBox artist={artist} />
-        <ArtistsBox artist={artist} />
-        <ArtistsBox artist={artist} />
-      </View>
+      <ScrollView style={styles.container}>
+
+        {
+          Array(500).fill(artist).map(l => {
+            return <ArtistsBox artist={artist} />
+          })
+        }
+      </ScrollView>
     );
   }
 }
